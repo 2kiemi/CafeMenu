@@ -3,6 +3,7 @@ class Menu {
     private $name;
     private $price;
     private $image;
+    private $orderCount = 0;
 
     public function __construct($name, $price, $image){
         $this->name = $name;
@@ -19,7 +20,19 @@ class Menu {
     }
 
     public function getTaxIncludePrice(){
-        return $this->price * 1.10;
+        return floor($this->price * 1.1);
+    }
+
+    public function getOrderCount(){
+        return $this->orderCount;
+    }
+
+    public function setOrderCount($orderCount){
+        $this->orderCount=$orderCount;
+    }
+
+    public function getTotalPrice(){
+        return $this->getTaxIncludePrice() * $this->orderCount;
     }
 }
 ?>
