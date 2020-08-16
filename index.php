@@ -19,6 +19,13 @@
                     <div class="menu-item">
                         <img src="<?php echo $menu->getImage()?>" class="menu-item-image">
                         <h3 class="menu-item-name" ><?php echo $menu->getName() ?></h3>
+                        <?php if($menu instanceof Drink):?>
+                            <p class="menu-item-type"><?php echo $menu->getType() ?></p>
+                        <?php else: ?>
+                            <?php for($i=0; $i<$menu->getSpiciness(); $i++): ?>
+                                <img src="https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/php/chilli.png" class="icon-spiciness">
+                            <?php endfor ?>
+                        <?php endif?>
                         <p class="price"><?php echo "¥".$menu->getTaxIncludePrice()."（税込）" ?></p>
                         <input type="text" name="<?php $menu->getName() ?>" value=0>
                         <span>個</span>
