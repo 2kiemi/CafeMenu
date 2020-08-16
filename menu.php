@@ -4,11 +4,13 @@ class Menu {
     private $price;
     private $image;
     private $orderCount = 0;
+    private static $count = 0;
 
     public function __construct($name, $price, $image){
         $this->name = $name;
         $this->price = $price;
         $this->image = $image;
+        self::$count++;
     }
 
     public function getName(){
@@ -33,6 +35,10 @@ class Menu {
 
     public function getTotalPrice(){
         return $this->getTaxIncludePrice() * $this->orderCount;
+    }
+
+    public static function getCount(){
+        return self::$count;
     }
 }
 ?>
